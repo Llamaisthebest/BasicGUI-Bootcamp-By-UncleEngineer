@@ -1,4 +1,4 @@
-#BasicGUI By Uncle Engineer
+# BasicGUI By Uncle Engineer
 
 from tkinter import *
 from tkinter import ttk, messagebox
@@ -30,7 +30,6 @@ def writecsv(data):
 def readcsv():
 	with open('data.csv',newline='',encoding='utf-8') as file:
 		fr = csv.reader(file)
-		# print(list(fr))
 		data = list(fr)
 	return data
 
@@ -48,7 +47,7 @@ def sumdata():
 ############################
 GUI = Tk()
 GUI.geometry('1000x700')
-GUI.title('Program')
+GUI.title('Program For Counting Food v.0.0.1')
 
 file = PhotoImage(file='FoodCalculater.png')
 IMG = Label(GUI,image=file,text='')
@@ -57,7 +56,7 @@ IMG.pack()
 L1 = Label(GUI,text='Program Counting Quantity Of Food(Must Use Full Screen)',font=('Angsana New',30,'bold'),fg='green')
 L1.pack()
 
-L2 = Label(GUI,text='Please Put In How Much Quantity Of Food(kg)',font=('Angsana New',20))
+L2 = Label(GUI,text='Please Put In How Much Quantity Of Food(kg.)',font=('Angsana New',20))
 L2.pack()
 
 v_quantity = StringVar()
@@ -71,7 +70,6 @@ def Calculate(event=None):
 	print('Count:', float(quantity) * price)
 	cal = float(quantity) * price
 
-	# writetext(quantity,cal)
 	data = [timestamp(thai=False), quantity, cal]
 	writecsv(data)
 
@@ -94,6 +92,7 @@ def SummaryData(event):
 	messagebox.showinfo(title,text)
 
 GUI.bind('<F1>',SummaryData)
+GUI.bind('<F2>',SummaryData)
 
 E1.focus()
 GUI.mainloop()
